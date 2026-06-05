@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --black: #080808;
+  --carbon: #111111;
+  --graphite: #1a1a1a;
+  --steel: #2a2a2a;
+  --smoke: #888;
+  --silver: #aaa;
+  --white: #f0ede8;
+  --amber: #e8a020;
+  --amber-dim: #a06c10;
+  --red: #c0281a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: 'Barlow', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+  cursor: crosshair;
+}
+
+@layer utilities {
+  .clip-btn {
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+  }
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse2 {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+  50% { transform: translate(-50%, -50%) scale(1.08); opacity: 1; }
+}
+
+.anim-fadeIn {
+  opacity: 0;
+  animation: fadeIn 1.2s ease 0.3s forwards;
+}
+
+.anim-fadeIn-delay {
+  opacity: 0;
+  animation: fadeIn 1s ease 1.2s forwards;
+}
+
+.anim-slideUp {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slideUp 0.9s ease 0.6s forwards;
+}
+
+.reticle-pulse {
+  animation: pulse2 3s ease-in-out infinite;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--steel);
+  max-width: 120px;
+}
